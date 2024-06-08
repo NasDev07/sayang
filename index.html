@@ -57,11 +57,11 @@
         }
 
         function bukaWa() {
-    const phoneNumber = "+622267429797";
-    const message = "Aku sudah melihat semuanya. Makasih ya! >< Aku sayang kamu. I love you ❤️";
-    const encodedMessage = encodeURIComponent(message);
-    window.location = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-}
+            const phoneNumber = "+622267429797";
+            const message = "Aku sudah melihat semuanya. Makasih ya! >< Aku sayang kamu. I love you ❤️";
+            const encodedMessage = encodeURIComponent(message);
+            window.location = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        }
 
 
         var today = new Date();
