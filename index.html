@@ -56,10 +56,16 @@
             audio.play();
         }
 
-        function bukaWa() {                                 
-            window.location = `https://wa.me/082267429797?text=Aku,%20sudah%melihat%20semuanya.%20Makasih%20ya!%20><%20Aku%20sayang%20kamu.%20I%20love%20you%20❤️`;
+        function bukaWa() {
+            const phoneNumber = "082267429797";
+            const message = "Aku sudah melihat semuanya. Makasih ya! >< Aku sayang kamu. I love you ❤️";
+            const encodedMessage = encodeURIComponent(message);
+            window.location = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            play();
+        });
 
         var today = new Date();
         var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear() + '.';
@@ -80,7 +86,6 @@
             });
 
             if (nama && nama.length < 9) {
-                play();
                 window.nama = nama;
                 document.getElementById("kamu").innerHTML = "" + window.nama;
                 await swals.fire('Hai, ' + nama + ' manis &#129395;', 'Aku ada pilihan nih buat kamu');
@@ -136,7 +141,7 @@
 
         async function pilihwarna() {
             var { isConfirmed: warna } = await swals.fire({
-                title: nama + ' mau pilih warna apa nih?',
+                title: window.nama + ' mau pilih warna apa nih?',
                 showCancelButton: true,
                 confirmButtonText: 'Ungu',
                 cancelButtonText: 'Kuning',
@@ -145,7 +150,7 @@
             if (warna) {
                 await swals.fire('Yeayy!', 'Kalo kamu pilih <b>Ungu</b> berarti kamu kesayanganku! &#129395;');
                 var { isConfirmed: warna2 } = await swals.fire({
-                    title: nama + ' yakin pilih warna Ungu?',
+                    title: window.nama + ' yakin pilih warna Ungu?',
                     text: 'Atau mau ganti warna aja nih?',
                     showCancelButton: true,
                     confirmButtonText: 'Yakin',
@@ -163,7 +168,7 @@
             } else {
                 await swals.fire('Yeayy!', 'Kalo kamu pilih <b>Kuning</b> berarti kamu kesayanganku! &#129395;');
                 var { isConfirmed: warna2 } = await swals.fire({
-                    title: nama + ' yakin pilih warna Kuning?',
+                    title: window.nama + ' yakin pilih warna Kuning?',
                     text: 'Atau mau ganti warna aja nih?',
                     showCancelButton: true,
                     confirmButtonText: 'Ganti',
